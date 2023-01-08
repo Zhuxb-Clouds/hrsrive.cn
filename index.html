@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<title>折扶桑 - AVG游戏制作组</title>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rowdies&display=swap">
+  <link rel="icon" type="image/x-icon" href="./img/icon.ico" ref="shortcut icon" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container" ref="container">
+      <div class="index" @mousemove="touchmove" ref="index">
+        <div class="bg" :style="{filter:`blur(${blur}px)`}"></div>
+        <div class="logo" :style="{top: top+'px',left:left+'px'}">
+          <img src="./img/logo.webp" alt="">
+          <p>GAME STUDIO</p>
+        </div>
+      </div>
+      <div class="intro" ref="intro">
+        <p>我们的作品</p>
+        <div class="intro-box">
+          <div class="games" :style="{right:((curGame-1)*100) + '%'}">
+            <div class="TheRoc" @click="jumpTo('https://store.steampowered.com/app/1389900/The_Roc/')">
+              <img src="./img/TheRoc.webp" alt="">
+            </div>
+            <div class="Ashes">
+              <img src="./img/Ashe.webp" alt="">
+            </div>
+          </div>
+          <div class="swipe">
+            <div class="swipe-item" :style="{background:curGame==i?'#fff':'rgba(255, 255, 255, 0.301)'}" v-for="i in 2"
+              :key="i" @click="changeGame(i)"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .swipe-item {
+      border-radius: 5px;
+      width: 30px;
+      height: 10px;
+      margin: 0 5px;
+      transition: all 0.2s;
+    }
+
+    .swipe {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      display: flex;
+
+
+    }
+
+    .games>div {
+      width: 100%;
+    }
+
+    .games {
+      width: 200%;
+      display: flex;
+      transition: all 1.75s;
+      position: relative;
+    }
+
+    .intro-box img {
+      width: 100%;
+    }
+
+    .intro-box {
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      width: 80%;
+      height: 80%;
+      background-color: #fff;
+      border-radius: 20px;
+      z-index: 0;
+      left: 10%;
+      top: 10%;
+    }
+
+    .white-shadow {
+      box-shadow:
+        2.8px 2.8px 2.2px rgba(255, 255, 255, 0.02),
+        6.7px 6.7px 5.3px rgba(255, 255, 255, 0.028),
+        12.5px 12.5px 10px rgba(255, 255, 255, 0.035),
+        22.3px 22.3px 17.9px rgba(255, 255, 255, 0.042),
+        41.8px 41.8px 33.4px rgba(255, 255, 255, 0.05),
+        100px 100px 80px rgba(255, 255, 255, 0.07);
+    }
+
+    .red-shadow {
+      box-shadow:
+        2.8px 2.8px 2.2px rgba(255, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(255, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(255, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(255, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(255, 0, 0, 0.05),
+        100px 100px 80px rgba(255, 0, 0, 0.07);
+    }
+
+    .intro {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      transition: all 2s;
+      background-color: #000;
+    }
+
+
+    .intro>p {
+      font-family: 'Noto Serif SC', serif;
+      /* font-weight: bold; */
+      position: absolute;
+      font-size: 50px;
+      left: 10%;
+      top: -3%;
+      z-index: 1;
+      color: #fff;
+    }
+
+    .index {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      position: relative;
+    }
+
+    .bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url('./img/bg.webp');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .logo>img {
+      filter: invert(100%);
+      -user-drag: none;
+      user-select: none;
+    }
+
+    .logo>p {
+      position: absolute;
+      top: calc(50% + 120px);
+      left: calc(50% - 50px);
+      font-size: 14px;
+      color: white;
+      font-family: "Rowdies";
+
+    }
+
+    .container {
+      /* width: 100%; */
+      background-color: #000;
+
+      height: 100vh;
+      overflow: scroll;
+    }
+
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+
+    ::selection {
+      background: rgb(71, 71, 71);
+      color: #fff;
+    }
+
+    body {
+      margin: 0;
+      /* background: #000; */
+    }
+  </style>
+
+
+  <script>
+    const { createApp } = Vue
+    createApp({
+      data() {
+        return {
+          blur: 0,
+          top: 0,
+          left: 0,
+          curGame: 1,
+          timer: null
+        }
+      },
+      beforeDestroy() {
+        clearInterval(timer)
+      },
+      mounted() {
+        this.autoChange()
+      },
+      methods: {
+        touchmove(e) {
+          const screenWidth = window.screen.width
+          const screenHeight = window.screen.height
+          let rateX = (e.clientX / screenWidth).toFixed(2)
+          let rateY = (e.clientY / screenHeight).toFixed(2)
+          // num = [0,4]
+          const numQ = (8 * rateX * rateX - 8 * rateX + 2) + (8 * rateY * rateY - 8 * rateY + 2)
+
+          this.blur = numQ
+          this.top = (-20 * rateY + 10)
+          this.left = (-20 * rateX + 10)
+        },
+        jumpTo(url) {
+          let a = document.createElement("a");
+          a.setAttribute("href", url);
+          a.setAttribute("target", "_blank");
+          a.setAttribute("id", 'jumpTo');
+          // 防止反复添加      
+          if (!document.getElementById('jumpTo')) {
+            document.body.appendChild(a);
+          }
+          a.click();
+        },
+        autoChange() {
+          this.timer = setInterval(() => {
+            if (this.curGame < 2) {
+              this.curGame++
+            } else {
+              this.curGame = 1
+            }
+          }, 5000)
+        },
+        changeGame(i) {
+          clearInterval(this.timer)
+          this.curGame = i
+          this.autoChange()
+        }
+      },
+
+    }).mount('#app')
+  </script>
+</body>
+
+
+</html>
