@@ -237,7 +237,7 @@
           let y = (e.clientY / screenHeight).toFixed(2)
           // num = [0,4]
           const distance = Math.sqrt(x * x + y * y - x - y + 0.5)
-          this.opacity = (-4 * distance * distance + 4 * distance).toFixed(3)
+          this.opacity = (-4 * distance * distance + 4 * distance - 0.3).toFixed(3)
           this.blur = ((8 * distance * distance - 8 * distance + 2) * 3).toFixed(3)
           console.log('this.opacity', this.opacity, this.blur)
 
