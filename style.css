@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  background: #fff;
+}
+
+.container,
+section {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50rem;
+  z-index: 999;
+}
+
+.slogan {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translateX(50%, 50%);
+  font-family: "Philosopher", sans-serif;
+  font-size: 1.5rem;
+  padding: 0.1rem 0.5rem;
+  color: #000f95;
+  z-index: 2;
+  background-color: #f8f8f8;
+}
+
+.logo > div {
+  /* 字体颜色渐变 fe0b2b -> f3b6c7 -> fcf7f8 */
+  background: linear-gradient(90deg, #fe0b2b, #f3b6c7 80%, #fcf7f8 95%);
+  /* 背景填充 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 -5rem;
+  font-family: "Noto Serif SC";
+  font-size: 50rem;
+  animation: easeIn 1s;
+  z-index: 0;
+  transform: scaleX(0.8);
+}
+
+.logo > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.logo > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.people {
+  /* 原大小居中 靠底 */
+  z-index: 1;
+  position: absolute;
+  left: 70%;
+  top: 200px;
+  transform: translate(-50%, 0);
+  /* 适应屏幕大小 */
+  width: 100%;
+  animation: fadeInUp 1s;
+  animation-delay: 0.5s;
+  /* 黑白 */
+  filter: grayscale(100%);
+}
+
+@keyframes easeIn {
+  /* ease in 曲线 */
+  0% {
+    transform: translate(0, -10%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, 0);
+
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  /* ease in 曲线 */
+  0% {
+    transform: translate(-50%, 20%);
+  }
+
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
