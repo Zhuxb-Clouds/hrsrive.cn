@@ -1,221 +1,102 @@
 <!DOCTYPE html>
 <html lang="cmn-Hans">
 
-<title>折扶桑 - AVG游戏制作组</title>
+<title>折扶桑 - 游戏制作组</title>
 
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rowdies&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/Zhuxb-Clouds/PicDepot/img/icon.ico"
     ref="shortcut icon" />
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="./css/locomotive-scroll.min.css">
+  <script src="/scripts/locomotive-scroll.min.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector("[data-scroll-container]"),
+        smooth: true,
+        multiplier: 0.75,
+        scrollFromAnywhere: true,
+      });
+      setTimeout(() => {
+        scroll.update();
+      }, 5000);
+    });
+
+  </script>
 </head>
 
 <body>
-  <div id="app">
-    <div class="container" ref="container">
-      <div class="index" @mousemove="touchmove" ref="index">
-        <div class="bg" :style="{filter:`blur(${blur}px)`}"></div>
-        <div class="fg" :style="{opacity:opacity}"></div>
-        <div class="logo" :style="{top: top+'px',left:left+'px'}">
-          <img src="https://cdn.jsdelivr.net/gh/Zhuxb-Clouds/PicDepot/img/202301081720766.webp" alt="">
-          <p>GAME STUDIO</p>
-        </div>
+
+  <main data-scroll-container>
+    <div class="full-screen" data-scroll-section>
+      <header>
+        <a href="/">
+          <img id="logo" src="/img/logo.png" alt="">
+        </a>
+        <nav>
+          <a href="https://weibo.com/u/7468928516" target="_blank">
+            <img id="weibo" src="/img/weibo.png" alt="">
+          </a>
+          <a href="https://space.bilibili.com/490145207" target="_blank">
+            <img id="bilibili" src="/img/bilibili.png" alt="">
+          </a>
+        </nav>
+      </header>
+    </div>
+    <div class="games" data-scroll-section>
+      <h2 class="title">
+        Our Game
+      </h2>
+      <div class="game-project">
+        <img src="/img/TheRoc.png" loading="lazy" alt="">
+        <h3 class="title">
+          大鹏 - The Roc
+        </h3>
+        <p>
+          <i>《大鹏TheRoc》是我们的第一部作品，目前已在摩点与Steam上公开。</i>
+        </p>
+        <p>
+          因为父母工作缘故，吴胜幽从家乡被迫来到大城市的高中读书。喜好诗歌的他内心细腻敏感，始终感觉自己与周遭的同学格格不入。班长魏红杉带他参观学校途中，他遇见了在假山上看书的周清。随后几日，吴胜幽见识到了周清的特立独行，并因此对这个女孩产生了极大的好奇心。
+        </p>
+        <p>
+          随着与她接触的增多，二人越走越近，他好像成了周清唯一的朋友。然而实际上，他又似乎一点都不了解周清真实的内心想法……
+        </p>
+        <p class="link">
+
+          <iframe src="https://store.steampowered.com/widget/1389900/" frameborder="0" width="700"
+            height="220"></iframe>
+        </p>
       </div>
-      <div class="intro" ref="intro">
-        <p>我们的作品</p>
-        <div class="intro-box">
-          <div class="games" :style="{right:((curGame-1)*100) + '%'}">
-            <div class="TheRoc" @click="jumpTo('https://store.steampowered.com/app/1389900/The_Roc/')">
-              <img src="https://cdn.jsdelivr.net/gh/Zhuxb-Clouds/PicDepot/img/202301081721783.webp" alt="">
-              <iframe src="https://store.steampowered.com/widget/1389900/" frameborder="0" width="500" height="190"></iframe>
-
-            </div>
-            <div class="Ashes">
-              <img src="img/Ashe.webp" alt="">
-            </div>
-          </div>
-          <div class="swipe">
-            <div class="swipe-item" :style="{background:curGame==i?'#fff':'rgba(255, 255, 255, 0.301)'}" v-for="i in 2"
-              :key="i" @click="changeGame(i)"></div>
-          </div>
-
-        </div>
-
+      <div class="game-project">
+        <img src="/img/Ashe.webp" loading="lazy" alt="">
+        <h3 class="title">
+          春之灰烬 - Ashes Of Spring
+        </h3>
+        <p>
+          <i>《春之灰烬》是一部“实验性质”的作品，这种实验性是对于制作的一些尝试，比如剧本、配音与演出。游戏全长在15-20min，包含了一个人物立绘，两个配音角色，四段章节体的叙事，十首原创BGM，以及一个大胆的尝试。</i>
+        </p>
+        <p>
+          高三的春天，几乎是和我患上神经衰弱的同一时间，我结识了一个女孩。
+        </p>
+        <p>
+          虽然与她相处的时间不长，但每当看见“青春”这种字眼，我总是会想起她。尽管她的名字长相我都已经记不清楚，可和她的那些经历却频频在梦中出现。
+        </p>
+        <p>我的青春没有绚丽的火花，只有那燃烧后，落入风中的春之灰烬。</p>
       </div>
     </div>
-  </div>
+    <footer data-scroll-section>
+      Copyright(c) 2024 hrsrive All rights reserved.
+    </footer>
+  </main>
+
+
+
 
   <style>
-    .swipe-item {
-      border-radius: 5px;
-      width: 30px;
-      height: 10px;
-      margin: 0 5px;
-      transition: all 0.2s;
-    }
-
-    .swipe {
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translate(-50%, 0);
-      display: flex;
-
-
-    }
-
-    .games>div {
-      width: 100%;
-      
-      height: 100%;
-    }
-    .games>div>img {
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
-    }
-
-    .games {
-      width: 200%;
-      height: 100%;
-      display: flex;
-      transition: all 1.75s;
-      position: relative;
-    }
-    iframe {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      border: none;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .intro-box img {
-      width: 100%;
-    }
-
-    .intro-box {
-      cursor: pointer;
-      overflow: hidden;
-      position: relative;
-      width: 80%;
-      height: 80%;
-      background-color: #000;
-      z-index: 0;
-      left: 10%;
-      top: 10%;
-    }
-
-    .white-shadow {
-      box-shadow:
-        2.8px 2.8px 2.2px rgba(255, 255, 255, 0.02),
-        6.7px 6.7px 5.3px rgba(255, 255, 255, 0.028),
-        12.5px 12.5px 10px rgba(255, 255, 255, 0.035),
-        22.3px 22.3px 17.9px rgba(255, 255, 255, 0.042),
-        41.8px 41.8px 33.4px rgba(255, 255, 255, 0.05),
-        100px 100px 80px rgba(255, 255, 255, 0.07);
-    }
-
-    .red-shadow {
-      box-shadow:
-        2.8px 2.8px 2.2px rgba(255, 0, 0, 0.02),
-        6.7px 6.7px 5.3px rgba(255, 0, 0, 0.028),
-        12.5px 12.5px 10px rgba(255, 0, 0, 0.035),
-        22.3px 22.3px 17.9px rgba(255, 0, 0, 0.042),
-        41.8px 41.8px 33.4px rgba(255, 0, 0, 0.05),
-        100px 100px 80px rgba(255, 0, 0, 0.07);
-    }
-
-    .intro {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      transition: all 2s;
-      background-color: #000;
-    }
-
-
-    .intro>p {
-      font-family: 'Noto Serif SC', serif;
-      /* font-weight: bold; */
-      position: absolute;
-      font-size: 50px;
-      left: 10%;
-      top: -3%;
-      z-index: 1;
-      color: #fff;
-    }
-
-    .index {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .logo {
-      position: relative;
-    }
-
-    .bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://cdn.jsdelivr.net/gh/Zhuxb-Clouds/PicDepot/img/202301081720801.webp');
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position: center;
-      overflow: hidden;
-    }
-
-    .fg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://cdn.jsdelivr.net/gh/Zhuxb-Clouds/PicDepot/img/202301100900489.webp');
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position: center;
-      overflow: hidden;
-    }
-
-    .logo>img {
-      filter: invert(100%);
-      -user-drag: none;
-      user-select: none;
-    }
-
-    .logo>p {
-      position: absolute;
-      top: calc(50% + 120px);
-      left: calc(50% - 50px);
-      font-size: 14px;
-      color: white;
-      font-family: "Rowdies";
-
-    }
-
-    .container {
-      /* width: 100%; */
-      background-color: #000;
-
-      height: 100vh;
-      overflow: scroll;
-    }
-
-    .container::-webkit-scrollbar {
-      display: none;
-    }
-
     ::selection {
       background: rgb(71, 71, 71);
       color: #fff;
@@ -223,74 +104,126 @@
 
     body {
       margin: 0;
-      /* background: #000; */
+      background: #fff;
+      scroll-behavior: smooth;
+    }
+
+    /* 不显示滚动条 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% - 80px);
+      height: fit-content;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      z-index: 999;
+    }
+
+    footer {
+      width: 100%;
+      height: 260px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      z-index: 999;
+    }
+
+    #logo {
+      height: 60px;
+    }
+
+    .full-screen {
+      width: 100%;
+      height: 100vh;
+      background: url(./img/background.png) no-repeat center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .games {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 220px;
+      padding: 20px;
+    }
+
+    .games>.title {
+      font-size: 2rem;
+      font-family: 'Roboto', cursive;
+      color: #000;
+      text-align: center;
+      margin-block: 120px;
+      font-weight: normal;
+      /* 斜体 */
+      font-style: italic;
+    }
+
+    .title {
+      position: relative;
+    }
+
+    .game-project>img {
+      width: 100%;
+    }
+
+    .game-project {
+      max-width: 65%;
+      font-family: 'Noto Serif SC';
+    }
+
+
+
+    .game-project>.title {
+      font-size: 32px;
+      color: #000;
+      text-align: left;
+      margin-block: 32px;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .game-project>p {
+      font-size: 20px;
+      color: #000;
+      text-align: left;
+      margin-block: 20px;
+      font-weight: 500;
+    }
+
+    p>i {
+      font-size: 20px;
+      color: #3f3f3f;
+      text-align: left;
+      margin-block: 20px;
+      font-weight: 400;
+    }
+
+    .link {
+      display: flex;
+      gap: 20px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    p {
+      position: relative;
     }
   </style>
 
-
-  <script>
-    const { createApp } = Vue
-    createApp({
-      data() {
-        return {
-          blur: 0,
-          top: 0,
-          left: 0,
-          curGame: 1,
-          timer: null,
-          opacity: 0,
-        }
-      },
-      beforeDestroy() {
-        clearInterval(timer)
-      },
-      mounted() {
-        this.autoChange()
-      },
-      methods: {
-        touchmove(e) {
-          const screenWidth = window.screen.width
-          const screenHeight = window.screen.height
-          let x = (e.clientX / screenWidth).toFixed(2)
-          let y = (e.clientY / screenHeight).toFixed(2)
-          // num = [0,4]
-          const distance = Math.sqrt(x * x + y * y - x - y + 0.5)
-          this.opacity = (-4 * distance * distance + 4 * distance - 0.3).toFixed(3)
-          this.blur = ((8 * distance * distance - 8 * distance + 2) * 3).toFixed(3)
-          console.log('this.opacity', this.opacity, this.blur)
-
-          this.top = (-20 * y + 10)
-          this.left = (-20 * x + 10)
-        },
-        jumpTo(url) {
-          let a = document.createElement("a");
-          a.setAttribute("href", url);
-          a.setAttribute("target", "_blank");
-          a.setAttribute("id", 'jumpTo');
-          // 防止反复添加      
-          if (!document.getElementById('jumpTo')) {
-            document.body.appendChild(a);
-          }
-          a.click();
-        },
-        autoChange() {
-          this.timer = setInterval(() => {
-            if (this.curGame < 2) {
-              this.curGame++
-            } else {
-              this.curGame = 1
-            }
-          }, 5000)
-        },
-        changeGame(i) {
-          clearInterval(this.timer)
-          this.curGame = i
-          this.autoChange()
-        }
-      },
-
-    }).mount('#app')
-  </script>
 </body>
 
 
