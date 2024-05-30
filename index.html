@@ -90,9 +90,14 @@
         multiplier: 0.75,
         scrollFromAnywhere: true,
       });
-      document.querySelector('.mask').style.display = 'none'
+      document.querySelector('.mask').style.opacity = 0;
+      document.body.style.overflow = 'auto';
+      setTimeout(() => {
+        document.querySelector('.mask').style.display = 'none';
+      }, 1000);
       setTimeout(() => {
         scroll.update();
+        // 
       }, 5000);
       document.addEventListener('DOMContentLoaded', function () {
         scroll.update();
@@ -111,19 +116,8 @@
       width: 100%;
       height: 100%;
       background: #fff;
-      z-index: 999;
-      /* 只应用消失 */
-      animation: fadeOut 1s forwards;
-      pointer-events: none;
-    }
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-      
+      z-index: 999999;
+      transition: opacity 1s;
     }
     ::selection {
       background: rgb(71, 71, 71);
@@ -135,6 +129,8 @@
       background: #fff;
       scroll-behavior: smooth;
       scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow: hidden;
     }
 
     /* 不显示滚动条 */
