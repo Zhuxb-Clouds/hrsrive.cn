@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<title>大鹏 - The Roc</title>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/Zhuxb-Clouds/PicDepot/img/icon.ico"
+    ref="shortcut icon" />
+  <link rel="stylesheet" href="../css/locomotive-scroll.min.css">
+
+
+</head>
+
+<body>
+  <div class="mask"></div>
+  <main data-scroll-container>
+    <div class="full-screen" data-scroll-section>
+      <header>
+        <a href="/">
+          <img id="logo" src="../img/logo.png" alt="">
+        </a>
+        <nav>
+          <a href="https://weibo.com/u/7468928516" target="_blank">
+            <img id="weibo" src="../img/weibo.png" alt="">
+          </a>
+          <a href="https://space.bilibili.com/490145207" target="_blank">
+            <img id="bilibili" src="../img/bilibili.png" alt="">
+          </a>
+        </nav>
+      </header>
+      <img src="./img/TheRoc.png" alt="">
+    </div>
+    <div data-scroll-section class="info">
+      <h3>About Story</h3>
+      <div>
+        <p>
+          因为父母工作缘故，吴胜幽从家乡被迫来到大城市的高中读书。喜好诗歌的他内心细腻敏感，始终感觉自己与周遭的同学格格不入。班长魏红杉带他参观学校途中，他遇见了在假山上看书的周清。随后几日，吴胜幽见识到了周清的特立独行，并因此对这个女孩产生了极大的好奇心。
+        </p>
+        <p>
+          随着与她接触的增多，二人越走越近，他好像成了周清唯一的朋友。然而实际上，他又似乎一点都不了解周清真实的内心想法……
+        </p>
+      </div>
+      <h3>CG</h3>
+      <div class="cg">
+        <img src="./img/cg00.png" alt="">
+        <img src="./img/cg04.png" alt="">
+        <img src="./img/cg11.png" alt="">
+        <img src="./img/CG06.png" alt="">
+      </div>
+      <h3>Music</h3>
+
+      <div class="video-box">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1055132376&bvid=BV1nn4y1R7dL&cid=1561392331&p=1&high_quality=1"
+          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="700">
+        </iframe>
+      </div>
+      <!-- 获取100%宽度的实际像素值，并且 -->
+      <h3>Steam</h3>
+      <iframe src="https://store.steampowered.com/widget/1389900/" frameborder="0" width="700" height="220"></iframe>
+    </div>
+    <footer data-scroll-section>
+      Copyright(c) 2024 hrsrive All rights reserved.
+    </footer>
+  </main>
+
+
+  <script src="../scripts/locomotive-scroll.min.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector("[data-scroll-container]"),
+        smooth: true,
+        multiplier: 0.75,
+        scrollFromAnywhere: true,
+      });
+      document.querySelector('.mask').style.opacity = 0;
+      document.body.style.overflow = 'auto';
+      setTimeout(() => {
+        document.querySelector('.mask').style.display = 'none';
+      }, 1000);
+      setTimeout(() => {
+        scroll.update();
+        // 
+      }, 5000);
+      document.addEventListener('DOMContentLoaded', function () {
+        scroll.update();
+      });
+      document.addEventListener('scroll', function () {
+        scroll.update();
+      });
+    });
+
+  </script>
+  <style>
+    .mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 999999;
+      transition: opacity 1s;
+    }
+
+    ::selection {
+      background: rgb(71, 71, 71);
+      color: #fff;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow: hidden;
+    }
+
+    /* 不显示滚动条 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% - 80px);
+      height: fit-content;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      z-index: 999;
+    }
+
+    footer {
+      width: 100%;
+      height: 260px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      z-index: 999;
+    }
+
+    main {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #logo {
+      height: 60px;
+    }
+
+    .full-screen {
+      width: 100%;
+      height: fit-content;
+      position: relative;
+      display: flex;
+    }
+
+    .full-screen>img {
+      width: 100%;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .games {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 220px;
+      padding: 20px;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-family: 'Noto Serif SC', cursive;
+      color: #000;
+      text-align: center;
+      margin-block: 120px;
+      font-weight: normal;
+    }
+
+    .title {
+      position: relative;
+    }
+
+    .info img {
+      width: 100%;
+    }
+
+    .info {
+      max-width: 65%;
+      font-family: 'Noto Serif SC';
+    }
+
+
+
+    .info p {
+      font-size: 20px;
+      color: #000;
+      text-align: left;
+      margin-block: 20px;
+      font-weight: 500;
+    }
+
+    p>i {
+      font-size: 20px;
+      color: #3f3f3f;
+      text-align: left;
+      margin-block: 20px;
+      font-weight: 400;
+    }
+
+    .link {
+      display: flex;
+      gap: 20px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    p {
+      position: relative;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .cg {
+      /* grid  */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .cg img {
+      width: 100%;
+      height: 100%;
+      /* cover */
+      object-fit: cover;
+    }
+
+    .video-box {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      /* 16:9比例 = (9/16)*100% = 56.25% */
+      height: 0;
+    }
+
+    .video-box iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+</body>
+
+
+</html>
