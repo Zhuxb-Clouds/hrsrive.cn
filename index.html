@@ -24,6 +24,12 @@
       setTimeout(() => {
         scroll.update();
       }, 5000);
+      document.addEventListener('DOMContentLoaded', function () {
+        scroll.update();
+      });
+      document.addEventListener('scroll', function () {
+        scroll.update();
+      });
     });
 
   </script>
@@ -106,6 +112,7 @@
       margin: 0;
       background: #fff;
       scroll-behavior: smooth;
+      scrollbar-width: none;
     }
 
     /* 不显示滚动条 */
