@@ -12,31 +12,12 @@
   <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/Zhuxb-Clouds/PicDepot/img/icon.ico"
     ref="shortcut icon" />
   <link rel="stylesheet" href="./css/locomotive-scroll.min.css">
-  <script src="./scripts/locomotive-scroll.min.js"></script>
-  <script>
-    window.addEventListener("load", () => {
-      const scroll = new LocomotiveScroll({
-        el: document.querySelector("[data-scroll-container]"),
-        smooth: true,
-        multiplier: 0.75,
-        scrollFromAnywhere: true,
-      });
-      setTimeout(() => {
-        scroll.update();
-      }, 5000);
-      document.addEventListener('DOMContentLoaded', function () {
-        scroll.update();
-      });
-      document.addEventListener('scroll', function () {
-        scroll.update();
-      });
-    });
 
-  </script>
+
 </head>
 
 <body>
-
+  <div class="mask"></div>
   <main data-scroll-container>
     <div class="full-screen" data-scroll-section>
       <header>
@@ -100,9 +81,50 @@
   </main>
 
 
+  <script src="./scripts/locomotive-scroll.min.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector("[data-scroll-container]"),
+        smooth: true,
+        multiplier: 0.75,
+        scrollFromAnywhere: true,
+      });
+      document.querySelector('.mask').style.display = 'none'
+      setTimeout(() => {
+        scroll.update();
+      }, 5000);
+      document.addEventListener('DOMContentLoaded', function () {
+        scroll.update();
+      });
+      document.addEventListener('scroll', function () {
+        scroll.update();
+      });
+    });
 
-
+  </script>
   <style>
+    .mask{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 999;
+      /* 只应用消失 */
+      animation: fadeOut 1s forwards;
+      pointer-events: none;
+    }
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+      
+    }
     ::selection {
       background: rgb(71, 71, 71);
       color: #fff;
