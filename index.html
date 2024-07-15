@@ -44,9 +44,8 @@
       <h2 class="title">Our Game</h2>
       <div class="game-project">
         <a href="./game/TheRoc" target="_blank">
-          <img class="main" src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/TheRoc.png" loading="lazy" alt="" />
-          <img class="zhouqing" src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/zhouqing-%E4%BB%B0%E5%A4%B4.webp" loading="lazy"
-            alt="">
+          <img class="main" src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/hrsrive/TheRoc.png" loading="lazy"
+            alt="" />
         </a>
         <h3 class="title">大鹏 - The Roc</h3>
         <p>
@@ -101,10 +100,21 @@
       document.addEventListener("DOMContentLoaded", function () {
         scroll.update();
       });
-      document.addEventListener("scroll", function () {
-        scroll.update();
+      // 获取所有img标签，onload事件监听,加载完成后更新滚动条
+      const imgs = document.getElementsByTagName("img")
+      Array.from(imgs).forEach((img,index) => {
+        // 如果图片已经加载完成，直接更新滚动条
+        if (img.complete) {
+          scroll.update();
+          return;
+        } else {
+          img.onload = () => {
+            scroll.update();
+          };
+        }
       });
     });
+
   </script>
   <style>
     .mask {}
@@ -226,11 +236,13 @@
       transition: .3s;
 
     }
-    .game-project>a:hover{
+
+    .game-project>a:hover {
       transform: scale(1.05);
     }
+
     .game-project>a:hover>.main {
-      
+
       border-radius: 1rem;
       /* 变暗 */
       filter: brightness(0.6);
@@ -244,11 +256,12 @@
 
     }
 
-    .main:hover + .zhouqing{
+    .main:hover+.zhouqing {
       opacity: 1;
       right: -20%;
     }
-    .zhouqing{
+
+    .zhouqing {
       position: absolute;
       top: -10%;
       right: -30%;
